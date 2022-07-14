@@ -16,6 +16,13 @@
 (set-frame-font "Consola Mono 12" nil t)
 ;;; Auto complete pair
 (add-hook 'prog-mode-hook 'electric-pair-mode)
+(setq gc-cons-threshold 10000000)
+;; Restore after startup
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (setq gc-cons-threshold 1000000)
+	    (message "gc-cons-threshold restored to %S"
+		     gc-cons-threshold)))
 
 ;;; Config packages
 (setq package-enable-at-startup nil)
@@ -34,24 +41,4 @@
 (add-hook 'after-init-hook
 	  (lambda () (message "loaded in %s" (emacs-init-time))))
 
-
-(setq gc-cons-threshold 10000000)
-;; Restore after startup
-(add-hook 'after-init-hook
-	  (lambda ()
-	    (setq gc-cons-threshold 1000000)
-	    (message "gc-cons-threshold restored to %S"
-		     gc-cons-threshold)))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(benchmark-init)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(install-package 'haskell-mode)
