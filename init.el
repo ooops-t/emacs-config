@@ -36,9 +36,31 @@
     (package-install name)
     (eval-when-compile (require name))))
 
+;;; Benchmark-init
 (install-package 'benchmark-init)
 ;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 (add-hook 'after-init-hook
 	  (lambda () (message "loaded in %s" (emacs-init-time))))
 
+;;; Haskell
 (install-package 'haskell-mode)
+
+;;; Markdown
+(install-package 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist
+             '("\\.\\(?:md\\|markdown\\|mkd\\|mdown\\|mkdn\\|mdwn\\)\\'" . markdown-mode))
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+;;; (setq markdown-command "markdown | smartypants")
+;;; Edit-indirect
+(install-package 'edit-indirect)
+
+;;; Org
+;;; (install-package 'org)
+
+;;; Which-key
+(install-package 'which-key)
+(which-key-mode)
