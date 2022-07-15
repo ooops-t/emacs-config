@@ -64,3 +64,6 @@
 ;;; Which-key
 (install-package 'which-key)
 (which-key-mode)
+
+;;; Theme
+(load-theme 'tango t)
