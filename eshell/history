@@ -1,9 +1,0 @@
-ls
-ls
-gcc
-gcc -v
-ls
-ls
-ls
-sbcl 
-ghci
